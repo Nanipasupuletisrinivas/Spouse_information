@@ -1,0 +1,295 @@
+openapi: '3.0.0'
+info:
+  title: ServiceApi 1-
+  version: '1.0'
+servers:
+  - url: http://localhost:9093
+
+
+paths:
+  /create/spouse/ssn:
+    post:
+      tags:
+        - spouse
+      description: Spouse Created
+      operationId: create_spouse
+      responses:
+        '201':
+          description: Spouse created Sucessful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Spouse creation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+      requestBody:
+        description: Creating Spouse
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyData1'
+
+  /create/spouse/itin:
+    post:
+      tags:
+        - spouse
+      description: Spouse Created
+      operationId: create_spouse
+      responses:
+        '201':
+          description: Spouse created Sucessful
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Spouse creation Failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+      requestBody:
+        description: Creating Spouse
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyData2'
+
+
+  /get/spouse/ssn:
+    get:
+      tags:
+        - spouse
+      description:  getting Spouse
+      operationId:  get_spouse
+      responses:
+        '201':
+          description: getting Spouse Sucessfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BodyData1'
+        '400':
+          description: getting Spouse Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+
+  /get/spouse/itin:
+    get:
+      tags:
+        - spouse
+      description:  getting Spouse
+      operationId:  get_spouse
+      responses:
+        '201':
+          description: getting Spouse Sucessfully
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BodyData2'
+        '400':
+          description: getting Spouse Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /update/spouse/ssn/{Account_Number}:
+    put:
+      tags:
+        - spouse
+      description:  Updating Spouse
+      operationId:  update_spouse
+      parameters:
+        - name: Account_Number
+          in: path
+          description: Update Spouse
+          required: true
+          schema:
+            type: number
+      responses:
+        '201':
+          description: Spouse updated Sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Spouse updation Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+      requestBody:
+        description: Updating Spouse
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyData1'
+              
+  
+  /update/spouse/itin/{Account_Number}:
+    put:
+      tags:
+        - spouse
+      description:  Updating Spouse
+      operationId:  update_spouse
+      parameters:
+        - name: Account_Number
+          in: path
+          description: Update Spouse
+          required: true
+          schema:
+            type: number
+      responses:
+        '201':
+          description: Spouse updated Sucessfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description: Spouse updation Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+      requestBody:
+        description: Updating Spouse
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BodyData2'
+              
+  /delete/spouse/ssn/{Account_Number}:
+    delete:
+      tags:
+        - spouse
+      description:  deleting spouse 
+      operationId:  delete_spouse
+      parameters:
+        - name: Account_Number
+          in: path
+          description: deleting Spouse
+          required: true
+          schema:
+            type: number
+      responses:
+        '201':
+          description:  Spouse Deletion sucessfull
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description:  Spouse Deletion Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+
+  /delete/spouse/itin/{Account_Number}:
+    delete:
+      tags:
+        - spouse
+      description:  deleting spouse 
+      operationId:  delete_spouse
+      parameters:
+        - name: Account_Number
+          in: path
+          description: deleting Spouse
+          required: true
+          schema:
+            type: number
+      responses:
+        '201':
+          description:  Spouse Deletion sucessfull
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '400':
+          description:  Spouse Deletion Failure
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+  
+            
+
+components:
+  schemas:
+    ApiResponse:
+      type: object
+      description:  ResponseInStatusCode
+      properties:
+        code: 
+          type: integer
+          format: int32
+        type:
+          type: string
+        message:
+          type: string    
+          
+    BodyData1:
+      type: object
+      properties:
+        First_Name: 
+          type: string
+        Middle_Name:
+          type: string
+        Last_Name:
+          type: string
+        DateOfBirth:
+          type: number
+        Occupation:
+          type: string
+        Visa_Type:
+          type: string
+        Account_Number:
+          type: number
+        SSN:
+          type: string
+    
+
+    BodyData2:
+      type: object
+      properties:
+        First_Name: 
+          type: string
+        Middle_Name:
+          type: string
+        Last_Name:
+          type: string
+        DateOfBirth:
+          type: number
+        Occupation:
+          type: string
+        Visa_Type:
+          type: string
+        Account_Number:
+          type: number
+        Passport_Number:
+          type: number
+        Passport_Expiry_Date:
+          type: string
+        Visa_Number:
+          type: number
+        Visa_Expiry_Date:
+          type: string
+        First_Entry_Date_into_USA:
+          type: string
+        
+        
+    
